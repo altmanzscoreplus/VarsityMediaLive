@@ -1,0 +1,107 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-unicornflix-dev-90322-authRole",
+      "UnauthRoleArn": "arn:aws:iam::367618527207:role/amplify-unicornflix-dev-90322-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::367618527207:role/amplify-unicornflix-dev-90322-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-unicornflix-dev-90322-deployment",
+      "UnauthRoleName": "amplify-unicornflix-dev-90322-unauthRole",
+      "StackName": "amplify-unicornflix-dev-90322",
+      "StackId": "arn:aws:cloudformation:us-east-1:367618527207:stack/amplify-unicornflix-dev-90322/88c49700-d26f-11eb-89d8-12ab197e9ef5",
+      "AmplifyAppId": "d2sll45s6y6yn8",
+      "AuthTriggerTemplateURL": ""
+    }
+  },
+  "auth": {
+    "unicornflix188d3f6d": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-unicornflix-dev-90322-deployment/amplify-cfn-templates/auth/unicornflix188d3f6d-cloudformation-template.yml",
+        "logicalId": "authunicornflix188d3f6d"
+      },
+      "lastPushTimeStamp": "2021-06-21T09:21:18.620Z",
+      "output": {
+        "UserPoolId": "us-east-1_Wee3PTJmd",
+        "AppClientIDWeb": "6rkdmvkl1231309k2u7br73dft",
+        "AppClientID": "5e27f6v98uue4p5fmjf8fhs4pg",
+        "IdentityPoolId": "us-east-1:d4356d64-091c-4a97-8e01-840535208498",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:367618527207:userpool/us-east-1_Wee3PTJmd",
+        "IdentityPoolName": "unicornflix188d3f6d_identitypool_188d3f6d__dev",
+        "UserPoolName": "unicornflix188d3f6d_userpool_188d3f6d"
+      },
+      "lastPushDirHash": "0B3PaZAD3DUB1beAivfjqw7K/xE="
+    },
+    "userPoolGroups": {
+      "service": "Cognito-UserPool-Groups",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "unicornflix188d3f6d",
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-unicornflix-dev-90322-deployment/amplify-cfn-templates/auth/template.json",
+        "logicalId": "authuserPoolGroups"
+      },
+      "lastPushTimeStamp": "2021-06-21T09:21:18.620Z",
+      "output": {
+        "AdminGroupRole": "arn:aws:iam::367618527207:role/us-east-1_Wee3PTJmd-AdminGroupRole"
+      },
+      "lastPushDirHash": "jA8ZR1DOXA1DGww204m1kEK5MtU="
+    }
+  },
+  "api": {
+    "unicornflix": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authunicornflix188d3f6d"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        },
+        "GraphQLAPIIdOutput": "w3a2ha6poncdjdbc4d6yuf5mle",
+        "GraphQLAPIEndpointOutput": "https://umrbsi3jkndw5c4ssnrrzcumhm.appsync-api.us-east-1.amazonaws.com/graphql"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-unicornflix-dev-90322-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apiunicornflix"
+      },
+      "lastPushTimeStamp": "2021-06-21T09:21:18.620Z",
+      "lastPushDirHash": "RVpGvshL1js37RVjywUqP5khx6Y="
+    }
+  },
+  "video": {
+    "performlyvod": {
+      "service": "video",
+      "serviceType": "video-on-demand",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-unicornflix-dev-90322-deployment/amplify-cfn-templates/video/performlyvod-vod-workflow-template.yaml",
+        "logicalId": "videoperformlyvod"
+      },
+      "lastPushTimeStamp": "2021-06-21T09:21:18.620Z",
+      "output": {
+        "oVodOutputUrl": "performlyvod-dev-output-a37yeo0p.s3.us-east-1.amazonaws.com",
+        "oVODOutputS3": "performlyvod-dev-output-a37yeo0p",
+        "oVODInputS3": "performlyvod-dev-input-a37yeo0p"
+      },
+      "lastPushDirHash": "q31z/UqUj7uHakz14NcWISrF078="
+    }
+  }
+}
